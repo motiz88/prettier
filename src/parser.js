@@ -23,6 +23,9 @@ const parsers = {
   },
   get json() {
     return eval("require")("./parser-json");
+  },
+  get remark() {
+    return eval("require")("./parser-remark");
   }
 };
 
