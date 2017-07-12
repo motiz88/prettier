@@ -9,40 +9,23 @@ const MODE_BREAK = 1;
 const MODE_FLAT = 2;
 
 function rootIndent() {
-  return {
-    indent: 0,
-    align: {
-      spaces: 0,
-      tabs: 0
-    }
-  };
+  return [];
 }
 
 function makeIndent(ind) {
-  return {
-    indent: ind.indent + 1,
-    align: ind.align
-  };
+  return [...ind, { indent: 1 }];
 }
 
 function makeAlign(ind, n) {
   if (n === -Infinity) {
-    return {
-      indent: 0,
-      align: {
-        spaces: 0,
-        tabs: 0
-      }
-    };
+    return [];
   }
 
-  return {
-    indent: ind.indent,
-    align: {
-      spaces: ind.align.spaces + n,
-      tabs: ind.align.tabs + (n ? 1 : 0)
-    }
-  };
+  return [...ind, { align: { spaces: n, tabs: n ? 1 : 0 } }];
+}
+
+function makeMarkerBlock(ind, marker) {
+  return [...ind, marker];
 }
 
 function fits(next, restCommands, width, mustBeFlat) {
@@ -81,6 +64,10 @@ function fits(next, restCommands, width, mustBeFlat) {
           break;
         case "align":
           cmds.push([makeAlign(ind, doc.n), mode, doc.contents]);
+
+          break;
+        case "marker-block":
+          cmds.push([makeMarkerBlock(ind, doc.marker), mode, doc.contents]);
 
           break;
         case "group":
@@ -172,6 +159,10 @@ function printDocToString(doc, options) {
           break;
         case "align":
           cmds.push([makeAlign(ind, doc.n), mode, doc.contents]);
+
+          break;
+        case "marker-block":
+          cmds.push([makeMarkerBlock(ind, doc.marker), mode, doc.contents]);
 
           break;
         case "group":
@@ -399,10 +390,8 @@ function printDocToString(doc, options) {
                   }
                 }
 
-                const length = ind.indent * options.tabWidth + ind.align.spaces;
-                const indentString = options.useTabs
-                  ? "\t".repeat(ind.indent + ind.align.tabs)
-                  : " ".repeat(length);
+                const length = getIndentLength(ind, options);
+                const indentString = getIndentString(ind, options);
                 out.push(newLine + indentString);
                 pos = length;
               }
@@ -426,6 +415,37 @@ function printDocToString(doc, options) {
   }
 
   return { formatted: out.join("") };
+}
+
+function getIndentLength(inds, options) {
+  if (!Array.isArray(inds)) {
+    inds = [inds];
+  }
+  return inds.reduce(
+    (sum, ind) =>
+      sum +
+      (ind.indent || 0) * options.tabWidth +
+      ((ind.align && ind.align.spaces) || 0),
+    0
+  );
+}
+
+function getIndentString(inds, options) {
+  if (!Array.isArray(inds)) {
+    inds = [inds];
+  }
+  return inds.reduce((str, ind) => {
+    if (typeof ind === "string") {
+      return str + ind;
+    }
+    const length = getIndentLength(ind, options);
+    return (
+      str +
+      (options.useTabs
+        ? "\t".repeat((ind.indent || 0) + ((ind.align && ind.align.tabs) || 0))
+        : " ".repeat(length))
+    );
+  }, "");
 }
 
 module.exports = { printDocToString };

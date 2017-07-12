@@ -158,6 +158,10 @@ Increase the level of indentation.
 
 This is similar to indent but it increases the level of indentation by a fixed number. When using tabs, it's going to print spaces. You should prefer using `indent` whenever possible.
 
+### markerBlock
+
+A block denoted by a continuous column of markers down its left-hand side. This is used to implement Markdown blockquotes.
+
 ### cursor
 
 This is a placeholder value where the cursor is in the original input in order to find where it would be printed.

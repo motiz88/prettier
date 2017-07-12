@@ -34,6 +34,12 @@ function align(n, contents) {
   return { type: "align", contents, n };
 }
 
+function markerBlock(marker, contents) {
+  assertDoc(contents);
+
+  return concat([marker, { type: "marker-block", contents, marker }]);
+}
+
 function group(contents, opts) {
   opts = opts || {};
 
@@ -126,6 +132,7 @@ module.exports = {
   literalline,
   group,
   conditionalGroup,
+  markerBlock,
   fill,
   lineSuffix,
   lineSuffixBoundary,
