@@ -24,6 +24,7 @@
     "graphql": "0.10.1",
     "jest-validate": "20.0.3",
     "json-to-ast": "2.0.0-alpha1.2",
+    "longest-streak": "2.0.1",
     "minimatch": "3.0.4",
     "minimist": "1.2.0",
     "parse5": "3.0.2",
@@ -33,9 +34,12 @@
     "postcss-scss": "1.0.0",
     "postcss-selector-parser": "2.2.3",
     "postcss-values-parser": "git://github.com/shellscape/postcss-values-parser.git#5e351360479116f3fe309602cdd15b0a233bc29f",
+    "remark-parse": "3.0.1",
+    "remark-stringify": "3.0.1",
     "strip-bom": "3.0.0",
     "typescript": "2.5.0-dev.20170617",
-    "typescript-eslint-parser": "git://github.com/eslint/typescript-eslint-parser.git#cfddbfe3ebf550530aef2f1c6c4ea1d9e738d9c1"
+    "typescript-eslint-parser": "git://github.com/eslint/typescript-eslint-parser.git#cfddbfe3ebf550530aef2f1c6c4ea1d9e738d9c1",
+    "unified": "6.1.5"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",
