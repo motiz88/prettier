@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`blockquote.md 1`] = `
+> This is a blockquote. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> This is a blockquote. Lorem ipsum dolor sit amet, consectetuer adipiscing
+> elit. Aliquam hendrerit mi posuere lectus.
+
+`;
+
+exports[`code-blocks.md 1`] = `
+	code block on the first line
+	
+Regular text.
+
+    code block indented by spaces
+
+Regular text.
+
+	the lines in this block  
+	all contain trailing spaces  
+
+Regular Text.
+
+	code block on the last line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\`\`\`
+code block on the first line
+\`\`\`
+
+Regular text.
+
+\`\`\`
+code block indented by spaces
+\`\`\`
+
+Regular text.
+
+\`\`\`
+the lines in this block  
+all contain trailing spaces
+\`\`\`
+
+Regular Text.
+
+\`\`\`
+code block on the last line
+\`\`\`
+
+`;
+
+exports[`definition.md 1`] = `
+[document 
+details]: <http://as> "a"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[document details]: http://as
+"a"
+
+`;
+
+exports[`deletion.md 1`] = `
+hello
+~~hi~~
+world
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hello ~~hi~~ world
+
+`;
+
+exports[`emphasis.md 1`] = `
+This is
+some *strong*
+text
+*right here*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is some *strong* text *right here*
+
+`;
+
+exports[`fenced-code.md 1`] = `
+\`\`\` js
+var a = 'hello';
+console.log(a + ' world');
+\`\`\`
+
+~~~bash
+echo "hello, \${WORLD}"
+~~~
+
+\`\`\`\`\`\`\`longfence
+Q: What do you call a tall person who sells stolen goods?
+\`\`\`\`\`\`\`
+
+~~~~~~~~~~  ManyTildes
+A longfence!
+~~~~~~~~~~
+
+\`\`\`\`\`\`  six
+These three don't close the block:
+\`\`\`
+\`\`\`\`\`\`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\`\`\`js
+var a = 'hello';
+console.log(a + ' world');
+\`\`\`
+
+\`\`\`bash
+echo "hello, \${WORLD}"
+\`\`\`
+
+\`\`\`longfence
+Q: What do you call a tall person who sells stolen goods?
+\`\`\`
+
+\`\`\`ManyTildes
+A longfence!
+\`\`\`
+
+\`\`\`\`six
+These three don't close the block:
+\`\`\`
+\`\`\`\`
+
+`;
+
+exports[`footnote.md 1`] = `
+Here is some text containing a footnote[^somesamplefootnote]. You can then continue your thought...
+
+[^somesamplefootnote]: Here is the text of the footnote itself.
+
+Even go to a new paragraph and the footnotes will go to the bottom of the document[^documentdetails].
+
+[^documentdetails]: Depending on the **final** form of your document, of course. See the documentation and experiment.
+
+    This footnote has a second paragraph.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Here is some text containing a footnote[^somesamplefootnote]. You can then
+continue your thought...
+
+[^somesamplefootnote]: Here is the text of the footnote itself.
+
+Even go to a new paragraph and the footnotes will go to the bottom of the
+document[^documentdetails].
+
+[^documentdetails]:
+
+  Depending on the **final** form of your document, of course. See the
+  documentation and experiment.
+
+  This footnote has a second paragraph.
+
+`;
+
+exports[`footnote-break-ident.md 1`] = `
+[^Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua]: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[^lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua]:
+
+  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat.
+
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur.
+
+`;
+
+exports[`footnote-inline.md 1`] = `
+This is an example of an inline footnote.[^This is the _actual_ footnote, which is fairly long.]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is an example of an inline footnote.[^This is the *actual* footnote, which
+is fairly long.]
+
+`;
+
+exports[`headings.md 1`] = `
+# One
+
+## Two
+
+### Three
+
+#### This is an infeasibly long heading intended to go over 80 characters but not break
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# One
+
+## Two
+
+### Three
+
+#### This is an infeasibly long heading intended to go over 80 characters but not break
+
+`;
+
+exports[`nested-blockquote-paragraph.md 1`] = `
+> >*Excepteur* sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+> >
+> > Excepteur *sint* occaecat cupidatat non proident,
+> > sunt in culpa qui officia deserunt mollit anim id est laborum.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > *Excepteur* sint occaecat cupidatat non proident, sunt in culpa qui officia
+> > deserunt mollit anim id est laborum.
+> >
+> > Excepteur *sint* occaecat cupidatat non proident, sunt in culpa qui officia
+> > deserunt mollit anim id est laborum.
+
+`;
+
+exports[`nested-blockquotes.md 1`] = `
+> foo
+>
+> > bar
+>
+> foo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> foo
+>
+> > bar
+>
+> foo
+
+`;
+
+exports[`text.md 1`] = `
+This is some text. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+
+
+This
+is
+a second
+paragraph
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is some text. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus.
+
+This is a second paragraph
+
+`;
