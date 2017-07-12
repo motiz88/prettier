@@ -8,6 +8,11 @@ const withCache = cosmiconfig("prettier");
 const noCache = cosmiconfig("prettier", { cache: false });
 
 function resolveConfig(filePath, opts) {
+  if (opts && opts.configFile === false) {
+    // do not look for a config file
+    return Promise.resolve(null);
+  }
+
   const useCache = !(opts && opts.useCache === false);
   const fileDir = filePath ? path.dirname(filePath) : undefined;
 
@@ -23,6 +28,10 @@ function resolveConfig(filePath, opts) {
         return mergeOverrides(result.config, filePath);
       })
   );
+}
+
+function clearCache() {
+  withCache.clearCaches();
 }
 
 function resolveConfigFile(filePath) {
@@ -64,5 +73,6 @@ function pathMatchesGlobs(filePath, patterns, excludedPatterns) {
 
 module.exports = {
   resolveConfig,
-  resolveConfigFile
+  resolveConfigFile,
+  clearCache
 };

@@ -22,6 +22,7 @@
     "get-stream": "3.0.0",
     "globby": "^6.1.0",
     "graphql": "0.10.1",
+    "ignore": "^3.3.3",
     "jest-validate": "20.0.3",
     "json-to-ast": "2.0.0-alpha1.2",
     "longest-streak": "2.0.1",
@@ -38,7 +39,7 @@
     "remark-stringify": "3.0.1",
     "strip-bom": "3.0.0",
     "typescript": "2.5.0-dev.20170617",
-    "typescript-eslint-parser": "git://github.com/eslint/typescript-eslint-parser.git#cfddbfe3ebf550530aef2f1c6c4ea1d9e738d9c1",
+    "typescript-eslint-parser": "git://github.com/eslint/typescript-eslint-parser.git#7c38401aa1452e6cc493151b8ab3a591e4d5e74a",
     "unified": "6.1.5"
   },
   "devDependencies": {
