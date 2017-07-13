@@ -138,12 +138,20 @@ function genericPrint(path, options, print) {
     }
 
     case "definition": {
-      const content = [uri(n.url)];
-      if (n.title) {
-        content.push(line, printWrappingText(title(n.title)));
-      }
+      const id = n.identifier.toLowerCase();
+      const idAndUrlParts = [...textToWords("[" + id + "]:"), line, uri(n.url)];
 
-      return concat(["[", printWrappingText(n.identifier), "]: ", ...content]);
+      return group(
+        indent(
+          concat(
+            [
+              fill(idAndUrlParts),
+              n.title && line,
+              n.title && fill(textToWords(title(n.title)))
+            ].filter(Boolean)
+          )
+        )
+      );
     }
 
     case "delete": {

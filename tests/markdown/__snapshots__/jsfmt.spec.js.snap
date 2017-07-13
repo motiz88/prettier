@@ -67,8 +67,28 @@ exports[`definition.md 1`] = `
 [document 
 details]: <http://as> "a"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[document details]: http://as "a"
+
+`;
+
+exports[`definition-break-title.md 1`] = `
+[document 
+details]: <http://as> "Lorem ipsum dolor sit amet,
+consectetur adipiscing elit.
+Curabitur at mollis lorem."
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [document details]: http://as
-"a"
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at mollis
+  lorem."
+
+`;
+
+exports[`definition-no-title.md 1`] = `
+[document 
+details]: <lorem://ipsum.dolor.sit.amet.consectetur.adipiscing.elit.curabitur.at.mollis.lorem>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[document details]:
+  lorem://ipsum.dolor.sit.amet.consectetur.adipiscing.elit.curabitur.at.mollis.lorem
 
 `;
 
