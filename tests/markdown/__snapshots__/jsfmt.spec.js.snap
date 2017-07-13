@@ -8,6 +8,20 @@ exports[`blockquote.md 1`] = `
 
 `;
 
+exports[`blockquote-code.md 1`] = `
+> \`\`\`js
+> function A
+> (
+> ) {
+> }
+> \`\`\`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> \`\`\`js
+> function A() {}
+> \`\`\`
+
+`;
+
 exports[`code-blocks.md 1`] = `
 	code block on the first line
 	
@@ -101,8 +115,8 @@ These three don't close the block:
 \`\`\`\`\`\`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \`\`\`js
-var a = 'hello';
-console.log(a + ' world');
+var a = "hello";
+console.log(a + " world");
 \`\`\`
 
 \`\`\`bash

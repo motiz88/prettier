@@ -8,6 +8,7 @@ const indent = docBuilders.indent;
 const hardline = docBuilders.hardline;
 const softline = docBuilders.softline;
 const concat = docBuilders.concat;
+const streak = require("longest-streak");
 
 function printSubtree(subtreeParser, path, print, options) {
   const next = Object.assign({}, { transformDoc: doc => doc }, subtreeParser);
@@ -33,6 +34,8 @@ function getSubtreeParser(path, options) {
     case "flow":
     case "typescript":
       return fromBabylonFlowOrTypeScript(path, options);
+    case "remark":
+      return fromRemark(path, options);
   }
 }
 
@@ -172,6 +175,62 @@ function fromHtmlParser2(path, options) {
   }
 }
 
+function fromRemark(path, options) {
+  const node = path.getValue();
+
+  switch (node.type) {
+    case "code": {
+      if (!node.lang) {
+        return;
+      }
+      const lang = node.lang.toLowerCase();
+      if (["css", "scss"].indexOf(lang) !== -1) {
+        return {
+          options: { parser: "postcss" },
+          transformDoc: transformMarkdownCodeBlock,
+          text: node.value
+        };
+      }
+      if (["js", "node", "jsx"].indexOf(lang) !== -1) {
+        const parser = options.parser === "flow" ? "flow" : "babylon";
+        return {
+          options: { parser },
+          transformDoc: transformMarkdownCodeBlock,
+          text: node.value
+        };
+      }
+      if (["markdown", "pandoc"].indexOf(lang) !== -1) {
+        return {
+          options: { parser: "remark" },
+          transformDoc: transformMarkdownCodeBlock,
+          text: node.value
+        };
+      }
+      if (["html"].indexOf(lang) !== -1) {
+        return {
+          options: { parser: "parse5" },
+          transformDoc: transformMarkdownCodeBlock,
+          text: node.value
+        };
+      }
+      if (["graphql"].indexOf(lang) !== -1) {
+        return {
+          options: { parser: "graphql" },
+          transformDoc: transformMarkdownCodeBlock,
+          text: node.value
+        };
+      }
+      if (["json"].indexOf(lang) !== -1) {
+        return {
+          options: { parser: "json" },
+          transformDoc: transformMarkdownCodeBlock,
+          text: node.value
+        };
+      }
+    }
+  }
+}
+
 function transformCssDoc(quasisDoc, parent) {
   const parentNode = parent.path.getValue();
   const expressionDocs = parentNode.expressions
@@ -236,6 +295,21 @@ function replacePlaceholders(quasisDoc, expressionDocs) {
   });
 
   return expressions.length === 0 ? newDoc : null;
+}
+
+function transformMarkdownCodeBlock(doc, parent) {
+  const node = parent.path.getValue();
+
+  const remarkOptions = {
+    fence: "`"
+  };
+
+  const marker = remarkOptions.fence;
+  const originalValue = node.value;
+  const fence = marker.repeat(Math.max(streak(originalValue, marker) + 1, 3));
+  const lang = node.lang;
+
+  return concat([fence, lang, hardline, doc, fence]);
 }
 
 function parseJavaScriptExpression(text, parsers) {
