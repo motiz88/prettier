@@ -104,8 +104,8 @@ function genericPrint(path, options, print) {
       const parent = path.getParentNode();
       let value = n.value;
       const marker = remarkOptions.fence;
-      const language = encode(n.lang || "");
-      if (!language && !remarkOptions.fences && value) {
+      const lang = encode(n.lang || "");
+      if (!lang && !remarkOptions.fences && value) {
         /* Throw when pedantic, in a list item which
         * isn’t compiled using a tab. */
         if (
@@ -134,7 +134,7 @@ function genericPrint(path, options, print) {
 
       fence = marker.repeat(Math.max(fence, 3));
 
-      return concat([fence, language, hardline, value, hardline, fence]);
+      return concat([fence, lang, hardline, value, hardline, fence]);
     }
 
     case "definition": {
