@@ -191,7 +191,7 @@ function fromRemark(path, options) {
           text: node.value
         };
       }
-      if (["js", "node", "jsx"].indexOf(lang) !== -1) {
+      if (["javascript", "js", "node", "jsx"].indexOf(lang) !== -1) {
         const parser = options.parser === "flow" ? "flow" : "babylon";
         return {
           options: { parser },
